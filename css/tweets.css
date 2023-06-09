@@ -1,0 +1,12 @@
+.tweets {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;    
+}
+
+.tweets .twitter-tweet {
+    display: flex;
+    margin: auto;
+}
+
