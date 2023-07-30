@@ -1,7 +1,7 @@
 .tweets {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: top;
     flex-wrap: wrap;    
 }
 
