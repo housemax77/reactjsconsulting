@@ -10,3 +10,39 @@
     margin: auto;
 }
 
+.newTweets {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: 0.375rem;
+    padding: 1rem;
+}
+
+.newTweets a {
+    color: rgb(29, 155, 240);
+}
+
+.avatar {
+    height: 3em;
+    width: 3em;
+    border-radius: 50%;
+}
+
+.text-xs {
+    font-size: 1rem;
+    line-height: 1rem;
+}
+
+.block {
+    display: block;
+}
+
+.top-bar {
+    /* align-items: center; */
+    width: 100%;
+    display: flex; 
+    align-items: center;
+    gap: 1em;
+}
+
+.main-text {
+    margin-top: 2rem;
+}
