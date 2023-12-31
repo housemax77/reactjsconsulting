@@ -361,9 +361,8 @@
       </div>
     </section>
 
-
-    <section class="tweets">
-      <div class="newTweets">
+    <section id="tweets" class="tweets">
+      <!-- <div class="newTweet">
           <div class="top-bar">
             <div class="leftColumn">
             <div>
@@ -386,7 +385,7 @@
                 <a href="https://twitter.com/hashtag/PluralsightLIVE?src=hashtag_click">#PluralsightLIVE</a>
             </p>
           </div>
-      </div>
+      </div> -->
       <!-- <a class="twitter-tweet" href="https://twitter.com/housecor/status/1034863155380473856?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1034863155380473856%7Ctwgr%5Ee50054e1e506336f23d5b0fe9624698db9b8d3c7%7Ctwcon%5Es1_&ref_url=http%3A%2F%2F192.168.5.202%3A8080%2F">
         <img src="img\tweets\react-conference-going-pro-pluralsight-live-2018-08-29.png" alt="React conference, going pro, pluralsight live" loading="lazy" />
       </a> -->
@@ -716,3 +715,113 @@
   </body>
 </html>
 <!-- http://startbootstrap.com/template-overviews/agency/ -->
+
+<script>
+
+  function createTweet(tweetBody, groupPhoto) {
+    // const tweetInfo = {tweetBody, groupPhoto}
+    return `<div class="newTweet">
+          <div class="top-bar">
+            <div class="leftColumn">
+            <div>
+            <img class="avatar" height="400" width="400" alt="User Avatar" src="img/tweets/profile-picture.jpg"/>
+          </div>
+          <div>
+          <b>Cory House</b>
+          </br>
+          <a href="https://twitter.com/housecor" class="block">@housecor</a>
+        </div>
+      </div>
+      <div class="rightColumn">
+        <div class="x-Logo"><img height="400" width="400" alt="X Logo" src="data:image/png;base64,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"/></div>
+      </div>
+    </div>
+          <div class="main-text"> 
+           ${tweetBody}
+          </div>
+          <div class="groupPhoto">
+           <img class="groupPhotos" alt="group photo" src="${groupPhoto}"/>
+           </div>
+      </div>`
+  }
+
+  const tweets = document.getElementById("tweets")
+
+            tweets.insertAdjacentHTML("beforeend", createTweet(`<p> Welp, speaking at
+               <a href="https://twitter.com/pluralsight">@pluralsight</a>
+              Live was a blast. Thanks for joining me for “Going Pro”! 
+                <a href="https://twitter.com/hashtag/PluralsightLIVE?src=hashtag_click">#PluralsightLIVE</a>
+            </p>`, `img/tweets/pluralsight-live.jpg`))
+
+            tweets.insertAdjacentHTML("beforeend", createTweet(`<p>Hey Heartland Dev Conf <a href="https://twitter.com/HDC411">@HDC411</a>
+            Thanks for coming to “Goodbye REST. Hello GraphQL!” Slides and demos here: <a src="https://github.com/coryhouse/graphql">https://github.com/coryhouse/graphql</a> <a src="https://twitter.com/hashtag/HDC2018?src=hashtag_click">#HDC2018</a></p>`, 
+            `img/tweets/heartland-dev-conf.jpg`))  
+
+            tweets.insertAdjacentHTML("beforeend", createTweet(`<p>Excited to be in Washington DC this week doing React Training for Summit!</p>`, 
+            `img/tweets/washington-dc-training.jpg`))
+
+            tweets.insertAdjacentHTML("beforeend", createTweet(`<p>I’ve been working heavily in React for 5 years now. Here’s a 50+ lessons I’ve learned along the way: <a href="http://bit.ly/5yrs-react">http://bit.ly/5yrs-react</a>
+            </br></br> <a href="https://twitter.com/hashtag/reactjs?src=hashtag_click">#reactjs</a></br></br>
+            From “Lessons from 5 Years in React” at <a href="https://twitter.com/connect_js">@connect_js</a> <a href="https://twitter.com/hashtag/ConnectTech?src=hashtag_click">#ConnectTech</a> </p>`, `img/tweets/connect-tech.jpg`))
+
+            tweets.insertAdjacentHTML("beforeend", createTweet(`Having a ball exploring React with a big group in Boston!`, `img/tweets/boston-training.jpg`))
+
+            tweets.insertAdjacentHTML("beforeend", createTweet(`<p>Had a great time today in my <a href="https://twitter.com/connect_js">@connect_js</a> workshop sharing "Lessons Learned From 7 Years in React"!
+            </br></br> Feels wonderful to be back at an in-person conference! 😀 </br></br> Thanks for coming everyone, and for all the great questions!</p>`,
+            `img/tweets/connect-js.jpg`))
+
+            tweets.insertAdjacentHTML("beforeend", createTweet(`Thanks for coming to “Building Reusable Components…That Are Actually Reusable” <a href="https://twitter.com/codemash">@codemash</a>!
+            </br></br> Loved all the questions and interactions! 
+            </br></br> <a href="https://www.dropbox.com/s/mp7oj67p8mozmyi/Building%20Reusable%20Components%20That%20Are%20Actually%20Resuable.pptx?dl=0">Here</a> are the slides 
+            </br></br> <a href="https://twitter.com/hashtag/CodeMash?src=hashtag_click">#CodeMash</a> `, 
+            `img/tweets/codemash.jpg`))
+
+            tweets.insertAdjacentHTML("beforeend", createTweet(`Thanks for coming to "React State: 7 Years of Lessons Learned <a href="https://twitter.com/codemash">@codemash</a>!
+            </br></br> Slides are <a href="https://www.dropbox.com/s/hggkc9myn3juqun/React-%207%20Years%20of%20Lessons%20Learned%20-%20Codemash%202022.pptx?dl=0">here</a>! 
+            </br></br> <a href="https://twitter.com/hashtag/CodeMash?src=hashtag_click">#CodeMash</a>`, `img/tweets/codemash2.jpg`))
+
+            tweets.insertAdjacentHTML("beforeend", createTweet(`It’s great to be back at in person meetups again! Really enjoyed presenting “Creating Custom Dev Tools and Mock APIs” at the Kansas City React Meetup.`,
+            `img/tweets/kansas-city-react-meetup.jpg`))
+
+            tweets.insertAdjacentHTML("beforeend", createTweet(`Had a great time presenting “The Immutable Laws of Software (and life) at <a href="https://twitter.com/CodeStock">@CodeStock</a>!
+            </br></br>  <a href="https://www.dropbox.com/s/pwpfmgr2sj2x0v0/The%20Immutable%20Laws%20of%20Software%20and%20Life%20-%20Codemash%202020.pptx?dl=0">Here</a> are the slides
+            </br></br> <a href="https://twitter.com/hashtag/codestock?src=hashtag_click">#codestock</a>
+            `,
+            `img/tweets/codestock.jpg`))
+
+            tweets.insertAdjacentHTML("beforeend", createTweet(`Thanks for coming to “Building Reusable Components…that are Actually Reusable” <a href="https://twitter.com/devupconf">@devupconf</a>!
+            </br></br> The full “Creating Reusable React Components” course: <a href="https://www.pluralsight.com/authors/cory-house">https://www.pluralsight.com/authors/cory-house</a>`,
+            `img/tweets/dev-up-conf.jpg`))
+
+            tweets.insertAdjacentHTML("beforeend", createTweet(`Hi <a href="https://twitter.com/kc_dc">@kc_dc</a>👋
+            </br></br> Thanks for coming to "Creating Reusable Components...That Are Actually Reusable"! 
+            </br></br> <a href="https://www.dropbox.com/s/mp7oj67p8mozmyi/Building%20Reusable%20Components%20That%20Are%20Actually%20Resuable.pptx?dl=0">Here</a> are the slides
+            </br></br> Here's the full course "Creating Reusable React Components": <a href="https://app.pluralsight.com/profile/author/cory-house">https://app.pluralsight.com/profile/author/cory-house</a>
+            </br></br> <a href="https://twitter.com/hashtag/kcdc?src=hashtag_click">#kcdc</a> <a href="https://twitter.com/hashtag/kcdc2022?src=hashtag_click">#kcdc2022</a>`, 
+            `img/tweets/kcdc.jpg`))
+
+            tweets.insertAdjacentHTML("beforeend", createTweet(`Had a wonderful time training a team on advanced React this week in Indianapolis!
+            </br></br> This was also the first time I changed my teaching stack to include Vite and Tailwind. Both were well received!
+            </br></br> (Okay, a few people disliked Tailwind, but I totally get it - it’s polarizing!)`, 
+            `img/tweets/indianapolis-training.jpg`))
+
+            tweets.insertAdjacentHTML("beforeend", createTweet(`Had a wonderful time in LA this week training a team on modern React. 
+            </br></br> With so much new good stuff in the React ecosystem we had a lot of ground to cover!`,
+            `img/tweets/la-training.jpg`))
+
+            tweets.insertAdjacentHTML("beforeend", createTweet(`Thanks for coming to "Lessons from Scaling a Reusable Component Library" at <a href="https://twitter.com/codemash">@codemash</a>! 
+            </br></br> <a href="https://www.dropbox.com/s/0yw0nrrtnlyfywr/Lessons%20From%20Scaling%20a%20Reusable%20Component%20Library.pptx?dl=0">Slides</a>
+            </br></br> <a href="https://twitter.com/hashtag/codemash?src=hashtag_click">#codemash</a>`,
+            `img/tweets/codemash3.jpg`))
+
+            tweets.insertAdjacentHTML("beforeend", createTweet(`Thanks for coming to "Effective Automated Testing: Lessons from 10 Years" at <a href="https://twitter.com/codemash">@codemash</a>!
+            </br></br> <a href="https://www.dropbox.com/s/1zi5820jwx4vq6g/Effective%20Automated%20Testing%20-%20Codemash%202023.pptx?dl=0">Here</a> are the slides, and a few pics people shared. Such a cool stage setup!
+            </br></br> <a href="https://twitter.com/hashtag/codemash?src=hashtag_click">#codemash</a>`, 
+            `img/tweets/codemash4.png`))
+
+            tweets.insertAdjacentHTML("beforeend", createTweet(`Having a wonderful week in Columbus teaching React!`, 
+            `img/tweets/columbus-training.jpg`))
+
+            // tweets.insertAdjacentHTML("beforeend", createTweet(``, ``))
+
+</script>
